@@ -8,7 +8,16 @@ BASELINE = 0.05  # Distance between the two cameras in meters
 
 
 cap = cv2.VideoCapture(camera_id)
-stereo = cv2.StereoBM_create(numDisparities=128, blockSize=11)
+stereo = cv2.StereoSGBM_create(minDisparity=0,
+    numDisparities=16 * 5,  # Example: 80, must be divisible by 16
+    blockSize=5,  # Example: smaller block size
+    P1=8 * 3 * 5**2,
+    P2=32 * 3 * 5**2,
+    disp12MaxDiff=1,
+    preFilterCap=31,
+    uniquenessRatio=15,
+    speckleWindowSize=100,
+    speckleRange=32)
 
 while True:
     ret, frame = cap.read()
@@ -25,6 +34,8 @@ while True:
 
     gray_left = cv2.cvtColor(left_frame, cv2.COLOR_BGR2GRAY)
     gray_right = cv2.cvtColor(right_frame, cv2.COLOR_BGR2GRAY)
+    gray_left = cv2.GaussianBlur(gray_left, (5, 5), 0)
+    gray_right = cv2.GaussianBlur(gray_right, (5, 5), 0)
 
     disparity = stereo.compute(gray_left, gray_right)
 
@@ -53,8 +64,9 @@ while True:
     # Display both frames
     # cv2.imshow("Left Camera", left_frame)
     # cv2.imshow("Right Camera", right_frame)
+
     cv2.imshow("Disparity Map", disparity_normalized)
-    cv2.imshow("Depth Map", depth_map_normalized)
+    cv2.imshow("Depth Map", depth_colormap)
 
     if cv2.waitKey(33) & 0xFF == ord('q'):
         break
