@@ -7,8 +7,8 @@ FOCAL_LENGTH = 700  # Focal length (in pixels)
 BASELINE = 0.1  # Baseline distance between the cameras (in meters)
 
 # Load the left and right images
-left_image = cv2.imread('images/leftimage.png', cv2.IMREAD_GRAYSCALE)  # Replace with your image paths
-right_image = cv2.imread('images/rightimage.png', cv2.IMREAD_GRAYSCALE)  # Replace with your image paths
+left_image = cv2.imread('images/imageLeft.png', cv2.IMREAD_GRAYSCALE)  # Replace with your image paths
+right_image = cv2.imread('images/imageRight.png', cv2.IMREAD_GRAYSCALE)  # Replace with your image paths
 
 # Check if images were loaded
 if left_image is None or right_image is None:
@@ -32,8 +32,8 @@ plt.show()
 
 nDispFactor = 7 #adjust this 
 minDisparity = 16
-
-stereo = cv2.StereoSGBM_create(minDisparity= minDisparity,
+# stereo = cv2.StereoBM_create(numDisparities=16*nDispFactor, blockSize=21)
+stereo = cv2.StereoSGBM.create(minDisparity= minDisparity,
     numDisparities=16*nDispFactor - minDisparity,  # Example: 80, must be divisible by 16
     blockSize=14,  # Example: smaller block size
     P1=8 * 3 * 7**2,
