@@ -1,0 +1,81 @@
+# Overall
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.DS_Store
+.obsidian/
+.idea/
+
+# LaTeX
+*.aux
+*.out
+*.fls
+*.log
+*.lof
+*.lot
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+*.fdb_latexmk
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+*.dvi
+*.xdv
+*-converted-to.*
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+*.alg
+*.loa
+
+# Python
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+*.ipynb_checkpoints
+*.env
+*.venv
+env/
+venv/
+ENV/
+
+# Firebase
+.idea
+**/node_modules/*
+**/.firebaserc
+
+# Java
+*.class
+*.log
+*.ctxt
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# SSH
+**/.ssh/id_*
+**/.ssh/*_id_*
+**/.ssh/known_hosts
+
+# Node
+node_modules
+package-lock.json
