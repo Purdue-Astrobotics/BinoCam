@@ -13,7 +13,7 @@ import cv2
 from ultralytics import YOLO
 
 # Download YOLO model if not done yet (choose one) from this linkL https://huggingface.co/jags/yolov8_model_segmentation-set/tree/main
-# !wget https://huggingface.co/jags/yolov8_model_segmentation-set/blob/main/yolov8m-seg.pt -P models
+# !wget https://huggingface.co/jags/yolov8_model_segmentation-set/blob/main/yolov8s-seg.pt -P models
 
 # Load YOLOv8 segmentation model (pretrained)
 model = YOLO("models/yolov8s-seg.pt")
